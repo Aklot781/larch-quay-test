@@ -20,6 +20,7 @@
   import FlatModal from './components/FlatModal.svelte';
   import ModalLead from './components/ModalLead.svelte';
   import ModalCallback from './components/ModalCallback.svelte';
+  import SpecialOffers from './components/SpecialOffers.svelte';
 
   import quayAerial from './assets/about/quay-aerial.png';
   import interior1 from './assets/about/interior-1.png';
@@ -105,6 +106,53 @@
     { type: 'tall', items: [6] },
     { type: 'wide', items: [7] },
     { type: 'tall', items: [8] },
+  ];
+
+    const specialOffers = [
+    {
+      id: 'QS-1209',
+      photo: '/media/offers/offer-1.png',
+      alt: 'Living room with a round table and a view of the water',
+      building: 'Quayside',
+      floor: 12,
+      title: '2 bedrooms, 58.1 m²',
+      note: 'Water side, no balcony',
+      price: 361800,
+      oldPrice: 389000,
+    },
+    {
+      id: 'CH-907',
+      photo: '/media/offers/offer-2.png',
+      alt: 'Living room with a tall window and a red crane stair outside',
+      building: 'Crane House',
+      floor: 9,
+      title: '2 bedrooms, 58.4 m²',
+      note: 'North-west corner, balcony over the courtyard',
+      price: 311100,
+      oldPrice: 334500,
+    },
+    {
+      id: 'YD-708',
+      photo: '/media/offers/offer-3.png',
+      alt: 'Dining table in front of a window with birch trees',
+      building: 'Yard',
+      floor: 7,
+      title: '2 bedrooms, 70.3 m²',
+      note: 'South-east corner, balcony over the courtyard',
+      price: 339900,
+      oldPrice: 365500,
+    },
+    {
+      id: 'TR-609',
+      photo: '/media/offers/offer-4.png',
+      alt: 'Sofa and open balcony doors facing the old town',
+      building: 'Terrace',
+      floor: 6,
+      title: '2 bedrooms, 74.8 m²',
+      note: 'Old town side, balcony facing the old town',
+      price: 382200,
+      oldPrice: 411000,
+    },
   ];
 
   const buildings = [
@@ -905,6 +953,8 @@
       </div>
     </div>
   </section>
+
+  <SpecialOffers offers={specialOffers} onBook={openCallback} />
 
   <section id="catalog" class="catalog wrap">
     <div class="row">
