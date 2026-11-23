@@ -23,13 +23,18 @@
   }
 
   function load(f) {
-    getJSON('/api/flats/' + f.id + '.json').then((data) => {
-      detail = data;
-      getJSON('/api/flats.json').then((list) => {
-        similar = list.filter((x) => data.similar.indexOf(x.id) > -1);
-      });
-    });
-  }
+  getJSON('/api/flats/' + f.id + '.json').then((data) => {
+    detail = data;
+
+    const list = window.appState && window.appState.flats
+      ? window.appState.flats
+      : [];
+
+    const similarIds = data.similar || [];
+
+    similar = list.filter((x) => similarIds.indexOf(x.id) > -1);
+  });
+}
 
   function close() {
     document.body.style.overflow = '';

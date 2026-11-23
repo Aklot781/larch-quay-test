@@ -370,7 +370,6 @@
         });
       });
       payments[flat.id] = rows;
-      console.log('payments', flat.id, rows);
     });
     window.appState.payments = payments;
   }
@@ -670,6 +669,10 @@
       flats = list;
       flatsStore.set(list);
       window.appState.flats = list;
+      preparePayments(list);
+
+      calcFlats = list;
+      onCalc();
       tick().then(() => ScrollTrigger.refresh());
       list.forEach((flat) => {
         getJSON('/api/flats/' + flat.id + '.json').then((data) => {
@@ -678,8 +681,6 @@
         });
       });
     });
-
-    getJSON('/api/flats.json?v=2').then(preparePayments);
 
     setInterval(() => {
       getJSON('/api/prices.json').then((data) => {
@@ -732,11 +733,6 @@
         gallerySwiper.slideNext();
       }
     }, 4500);
-
-    getJSON('/api/flats.json?_=' + Date.now()).then((list) => {
-      calcFlats = list;
-      onCalc();
-    });
 
     map = new maplibregl.Map({
       container: mapEl,
