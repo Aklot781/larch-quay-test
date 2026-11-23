@@ -17,9 +17,7 @@ export default defineConfig({
     port: 4173,
   },
   build: {
-    minify: false,
     sourcemap: true,
-    assetsInlineLimit: 10485760,
     cssCodeSplit: false,
     rolldownOptions: {
       output: {
